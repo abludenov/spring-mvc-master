@@ -1,43 +1,15 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Cars</title>
-    <style>
-        table th, table td {padding: 5px;}
-        .row  {
-            font-style: italic;
-        }
-        .even-row {
-            color: black;
-        }
-        .odd-row {
-            color: black;
-        }
-    </style>
 </head>
-
 <body>
-<h1>Cars</h1>
 
-<table border="1">
-    <tr>
-        <th>Producer</th>
-        <th>Model</th>
-        <th>SerialNumber</th>
-    </tr>
 
-    <tr th:each="car, state : ${carList}"
-        class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-
-        <td th:utext="${car.carProduce}">carProducer</td>
-        <td th:utext="${car.carModel}">carModel</td>
-        <td th:utext="${car.carSerialNumber}">carSerialNumber</td>
-
-    </tr>
-
-</table>
+<div th:each="car : ${carList}">
+    <a th:text="${car.getCarProduce() + ' ' + car.getCarModel() + ' ' + car.getCarSerialNumber()}">car</a>
+</div>
 
 </body>
 </html>
